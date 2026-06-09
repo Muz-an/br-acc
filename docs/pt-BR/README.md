@@ -4,7 +4,7 @@
 
 [English](../../README.md) | [Portugues](README.md)
 
-**Infraestrutura open-source em grafo que cruza bases publicas brasileiras para gerar inteligencia acionavel para melhoria civica.**
+**Infraestrutura open-source em grafo que cruza bases públicas brasileiras para gerar inteligência acionável para melhoria cívica.**
 
 [![CI](https://github.com/World-Open-Graph/br-acc/actions/workflows/ci.yml/badge.svg)](https://github.com/World-Open-Graph/br-acc/actions/workflows/ci.yml)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
@@ -19,11 +19,11 @@
 
 ---
 
-## O que e br/acc?
+## O que é br/acc?
 
-br/acc e um movimento descentralizado de builders brasileiros usando tecnologia e dados abertos para tornar informacao publica mais acessivel. Este repositorio e um de seus projetos: uma infraestrutura open-source em grafo que ingere bases de dados publicas brasileiras oficiais — registros de empresas, saude, educacao, emprego, financas publicas, licitacoes, meio ambiente — e normaliza tudo em um unico grafo consultavel.
+br/acc é um movimento descentralizado de builders brasileiros usando tecnologia e dados abertos para tornar informação pública mais acessível. Este repositório é um de seus projetos: uma infraestrutura open-source em grafo que ingere bases de dados públicas brasileiras oficiais, registros de empresas, saúde, educação, emprego, finanças públicas, licitações, meio ambiente e normaliza tudo em um único grafo consultável.
 
-Ele torna dados publicos que ja sao abertos, mas espalhados em dezenas de portais, acessiveis em um so lugar. Nao interpreta, pontua ou classifica resultados — apenas exibe conexoes e deixa os usuarios tirarem suas proprias conclusoes.
+Ele torna dados públicos que já são abertos, mas espalhados em dezenas de portais, acessíveis em um só lugar. Não interpreta, pontua ou classifica resultados — apenas exibe conexões e deixa os usuários tirarem suas próprias conclusões.
 
 [Saiba mais em bracc.org](https://bracc.org)
 
@@ -40,14 +40,14 @@ Ele torna dados publicos que ja sao abertos, mas espalhados em dezenas de portai
 
 ---
 
-## Inicio Rapido
+## Início Rápido
 
 ```bash
 cp .env.example .env
 make bootstrap-demo
 ```
 
-Esse comando inicia os servicos Docker, espera Neo4j/API ficarem saudaveis e carrega seed deterministico de desenvolvimento.
+Esse comando inicia os serviços Docker, espera Neo4j/API ficarem saudáveis e carrega seed determinístico de desenvolvimento.
 
 Verifique em:
 
@@ -57,70 +57,70 @@ Verifique em:
 
 ### Subir com Docker
 
-Voce pode subir a stack (Neo4j, API, frontend) com Docker Compose sem rodar o bootstrap completo:
+Você pode subir a stack (Neo4j, API, frontend) com Docker Compose sem rodar o bootstrap completo:
 
 ```bash
 cp .env.example .env
 docker compose up -d
 ```
 
-Opcional: incluir o servico ETL (para rodar pipelines no container):
+Opcional: incluir o serviço ETL (para rodar pipelines no container):
 
 ```bash
 docker compose --profile etl up -d
 ```
 
-As mesmas URLs de verificacao valem. Para um grafo demo pronto com dados de seed, use `make bootstrap-demo`.
+As mesmas URLs de verificação valem. Para um grafo demo pronto com dados de seed, use `make bootstrap-demo`.
 
 ---
 
-## Fluxo Em Um Comando
+## Fluxo em um Comando
 
 ```bash
-# Fluxo demo local (recomendado para primeira execucao)
+# Fluxo demo local (recomendado para primeira execução)
 make bootstrap-demo
 
-# Orquestracao pesada de ingestao completa (Docker + todos pipelines implementados)
+# Orquestração pesada de ingestão completa (Docker + todos pipelines implementados)
 make bootstrap-all
 
-# Execucao pesada nao interativa (automacao)
+# Execução pesada não interativa (automação)
 make bootstrap-all-noninteractive
 
-# Exibir ultimo relatorio do bootstrap-all
+# Exibir último relatório do bootstrap-all
 make bootstrap-all-report
 ```
 
 `make bootstrap-all` e propositalmente pesado:
-- alvo padrao de ingestao historica completa
+- alvo padrão de ingestão historica completa
 - pode levar horas (ou mais), dependendo das fontes externas
-- exige disco, memoria e banda de rede significativos
-- continua em caso de erro e grava resumo auditavel por fonte em `audit-results/bootstrap-all/`
+- exige disco, memória e banda de rede significativos
+- continua em caso de erro e grava resumo auditável por fonte em `audit-results/bootstrap-all/`
 
 Guia detalhado: [`docs/bootstrap_all.md`](../bootstrap_all.md)
 
 ---
 
-## O Que Esta Incluido Neste Repositorio Publico
+## O que está incluído neste repositório público
 
 - Codigo de API, frontend, framework ETL e infraestrutura.
-- Registro de fontes e documentacao de status de pipelines.
-- Dataset demo sintetico e caminho deterministico de seed local.
-- Gates publicos de seguranca/compliance e documentacao de release.
+- Registro de fontes e documentação de status de pipelines.
+- Dataset demo sintético e caminho deterministico de seed local.
+- Gates públicos de segurança/compliance e documentação de release.
 
-## O Que Nao Esta Incluido Por Padrao
+## O que não está incluído por padrão
 
-- Dump Neo4j de producao pre-populado.
+- Dump Neo4j de produção pré-populado.
 - Garantia de estabilidade/disponibilidade de todos os portais externos.
-- Modulos institucionais/privados e runbooks operacionais internos.
+- Módulos institucionais/privados e runbooks operacionais internos.
 
-## O Que E Reproduzivel Localmente Hoje
+## O que é reproduzivel localmente hoje
 
 - Subida completa local (`make bootstrap-demo`) com grafo demo.
 - Fluxo BYO-data via pipelines `bracc-etl`.
-- Orquestracao pesada em um comando (`make bootstrap-all`) com relatorio explicito de fontes bloqueadas/falhas.
-- Comportamento da API publica em modo seguro de privacidade.
+- Orquestração pesada em um comando (`make bootstrap-all`) com relatório explicito de fontes bloqueadas/falhas.
+- Comportamento da API pública em modo seguro de privacidade.
 
-Contadores de escala de producao sao publicados como **snapshot de referencia de producao** em [`docs/reference_metrics.md`](../reference_metrics.md), nao como resultado esperado do bootstrap local.
+Contadores de escala de produção são publicados como **snapshot de referência de produção** em [`docs/reference_metrics.md`](../reference_metrics.md), não como resultado esperado do bootstrap local.
 
 ---
 
@@ -145,7 +145,7 @@ graph LR
 
 ---
 
-## Mapa do Repositorio
+## Mapa do repositorio
 
 ```
 api/          Backend FastAPI (rotas, servicos, modelos)
@@ -174,9 +174,9 @@ Documentacao interativa completa em `http://localhost:8000/docs` apos iniciar a 
 
 ## Contribuindo
 
-Contribuicoes de todos os tipos sao bem-vindas — codigo, pipelines de dados, documentacao e relatos de bugs. Veja as issues abertas para primeiras tarefas, ou abra uma nova para discutir sua ideia.
+Contribuiçes de todos os tipos s~~ao bem-vindas — código, pipelines de dados, documentação e relatos de bugs. Veja as issues abertas para primeiras tarefas, ou abra uma nova para discutir sua ideia.
 
-Se voce achou o projeto util, **de uma estrela no repo** — ajuda outras pessoas a descobri-lo.
+Se você achou o projeto útil, **dê uma estrela no repo** — ajuda outras pessoas a descobri-lo.
 
 ---
 
@@ -186,7 +186,7 @@ Se voce achou o projeto util, **de uma estrela no repo** — ajuda outras pessoa
 
 Se quiser apoiar o desenvolvimento diretamente:
 
-| Rede | Endereco |
+| Rede | Endereço |
 |---|---|
 | Solana | `HFceUyei1ndQypNKoiYSsHLHrVcaMZeNBeRhs8LmmkLn` |
 | Ethereum | `0xbB3538D3e1B1Dd7c916BE7DfAC9ac7e322f592c7` |
@@ -202,17 +202,17 @@ Se quiser apoiar o desenvolvimento diretamente:
 
 ---
 
-## Legal e Etica
+## Legal e Ética
 
-Todos os dados processados por este projeto sao publicos por lei. Cada fonte e publicada por um portal do governo brasileiro ou iniciativa internacional de dados abertos, disponibilizada sob um ou mais dos seguintes instrumentos legais:
+Todos os dados processados por este projeto são públicos por lei. Cada fonte é publicada por um portal do governo brasileiro ou iniciativa internacional de dados abertos, disponibilizada sob um ou mais dos seguintes instrumentos legais:
 
 | Lei | Escopo |
 |---|---|
-| **CF/88 Art. 5 XXXIII, Art. 37** | Direito constitucional de acesso a informacao publica |
-| **Lei 12.527/2011 (LAI)** | Lei de Acesso a Informacao — regula o acesso a dados governamentais |
-| **LC 131/2009 (Lei da Transparencia)** | Obriga publicacao em tempo real de dados fiscais e orcamentarios |
-| **Lei 13.709/2018 (LGPD)** | Protecao de dados — Art. 7 IV/VII permitem tratamento de dados publicos para interesse publico |
-| **Lei 14.129/2021 (Governo Digital)** | Obriga dados abertos por padrao para orgaos governamentais |
+| **CF/88 Art. 5 XXXIII, Art. 37** | Direito constitucional de acesso a informação pública |
+| **Lei 12.527/2011 (LAI)** | Lei de Acesso a Informação — regula o acesso a dados governamentais |
+| **LC 131/2009 (Lei da Transparência)** | Obriga publicação em tempo real de dados fiscais e orcamentários |
+| **Lei 13.709/2018 (LGPD)** | Proteção de dados — Art. 7 IV/VII permitem tratamento de dados públicos para interesse público |
+| **Lei 14.129/2021 (Governo Digital)** | Obriga dados abertos por padrão para orgãos governamentais |
 
 <details>
 <summary><b>Matriz de Datasets Brasil (Base Legal)</b></summary>
@@ -220,48 +220,48 @@ Todos os dados processados por este projeto sao publicos por lei. Cada fonte e p
 | # | Fonte | Portal | Base Legal |
 |---|-------|--------|------------|
 | 1 | CNPJ (Cadastro de Empresas) | Receita Federal | LAI, CF Art. 37 |
-| 2 | TSE (Eleicoes e Doacoes) | dadosabertos.tse.jus.br | Lei 9.504/1997 (Lei Eleitoral), LAI |
-| 3 | Portal da Transparencia | portaldatransparencia.gov.br | LC 131/2009, LAI |
-| 4 | CEIS/CNEP (Sancoes) | Portal da Transparencia | LAI, Lei 12.846/2013 (Lei Anticorrupcao) |
-| 5 | BNDES (Emprestimos) | bndes.gov.br | LAI, LC 131/2009 |
-| 6 | PGFN (Divida Ativa) | portaldatransparencia.gov.br | LAI, Lei 6.830/1980 |
-| 7 | ComprasNet (Licitacoes) | comprasnet.gov.br | Lei 14.133/2021 (Licitacoes), LAI |
-| 8 | TCU (Sancoes de Auditoria) | portal.tcu.gov.br | LAI, CF Art. 71 |
+| 2 | TSE (Eleições e Doações) | dadosabertos.tse.jus.br | Lei 9.504/1997 (Lei Eleitoral), LAI |
+| 3 | Portal da Transparência | portaldatransparencia.gov.br | LC 131/2009, LAI |
+| 4 | CEIS/CNEP (Sanções) | Portal da Transparência | LAI, Lei 12.846/2013 (Lei Anticorrupção) |
+| 5 | BNDES (Empréstimos) | bndes.gov.br | LAI, LC 131/2009 |
+| 6 | PGFN (Dívida Ativa) | portaldatransparencia.gov.br | LAI, Lei 6.830/1980 |
+| 7 | ComprasNet (Licitações) | comprasnet.gov.br | Lei 14.133/2021 (Licitações), LAI |
+| 8 | TCU (Sanções de Auditoria) | portal.tcu.gov.br | LAI, CF Art. 71 |
 | 9 | TransfereGov | transferegov.sistema.gov.br | LC 131/2009, LAI |
 | 10 | RAIS (Estatisticas Trabalhistas) | PDET/MTE | LAI (agregado, sem dados pessoais) |
 | 11 | INEP (Censo Educacional) | dados.gov.br | LAI, Lei 14.129/2021 |
-| 12 | DataSUS/CNES (Saude) | datasus.saude.gov.br | LAI, Lei 8.080/1990 (SUS) |
+| 12 | DataSUS/CNES (Saúde) | datasus.saude.gov.br | LAI, Lei 8.080/1990 (SUS) |
 | 13 | IBAMA (Embargos) | dados.gov.br | LAI, Lei 9.605/1998 (Crimes Ambientais) |
-| 14 | DOU (Diario Oficial) | in.gov.br | CF Art. 37 (publicidade) |
+| 14 | DOU (Diário Oficial) | in.gov.br | CF Art. 37 (publicidade) |
 | 15 | Camara (Despesas de Deputados) | dadosabertos.camara.leg.br | LAI, CF Art. 37 |
 | 16 | Senado (Despesas de Senadores) | dadosabertos.senado.leg.br | LAI, CF Art. 37 |
-| 17 | ICIJ (Offshore Leaks) | offshoreleaks.icij.org | Base de dados jornalistica de interesse publico |
+| 17 | ICIJ (Offshore Leaks) | offshoreleaks.icij.org | Base de dados jornalística de interesse público |
 | 18 | OpenSanctions (PEPs Globais) | opensanctions.org | Agregador open-data (licenca CC) |
 | 19 | CVM (Processos de Valores Mobiliarios) | dados.cvm.gov.br | LAI, Lei 6.385/1976 |
 | 20 | CVM Fundos | dados.cvm.gov.br | LAI, Lei 6.385/1976 |
-| 21 | Servidores Publicos | Portal da Transparencia | LC 131/2009, LAI |
+| 21 | Servidores Públicos | Portal da Transparência | LC 131/2009, LAI |
 | 22 | CEAF (Servidores Expulsos) | portaldatransparencia.gov.br | LAI, Lei 8.112/1990 |
 | 23 | CEPIM (ONGs Impedidas) | portaldatransparencia.gov.br | LAI |
 | 24 | CPGF (Cartoes Corporativos) | portaldatransparencia.gov.br | LC 131/2009, LAI |
-| 25 | Viagens a Servico | portaldatransparencia.gov.br | LC 131/2009, LAI |
-| 26 | Renuncias Fiscais | portaldatransparencia.gov.br | LC 131/2009, LAI |
+| 25 | Viagens a Serviço | portaldatransparencia.gov.br | LC 131/2009, LAI |
+| 26 | Renúncias Fiscais | portaldatransparencia.gov.br | LC 131/2009, LAI |
 | 27 | Acordos de Leniencia | portaldatransparencia.gov.br | Lei 12.846/2013, LAI |
 | 28 | BCB Penalidades | dados.bcb.gov.br | LAI, Lei 4.595/1964 |
-| 29 | STF (Supremo Tribunal Federal) | portal.stf.jus.br | CF Art. 93 IX (publicidade judiciaria) |
+| 29 | STF (Supremo Tribunal Federal) | portal.stf.jus.br | CF Art. 93 IX (publicidade judiciária) |
 | 30 | PEP CGU | portaldatransparencia.gov.br | LAI, Decreto 9.687/2019 |
-| 31 | TSE Bens (Patrimonio de Candidatos) | dadosabertos.tse.jus.br | Lei 9.504/1997 |
-| 32 | TSE Filiados (Filiacao Partidaria) | dadosabertos.tse.jus.br | Lei 9.096/1995 (Lei dos Partidos) |
-| 33 | OFAC SDN | treasury.gov | Lista publica de sancoes dos EUA |
-| 34 | EU Sanctions | data.europa.eu | Lista publica de sancoes da UE |
-| 35 | UN Sanctions | un.org | Lista publica do Conselho de Seguranca da ONU |
-| 36 | World Bank Debarment | worldbank.org | Lista publica de impedimentos |
+| 31 | TSE Bens (Patrimônio de Candidatos) | dadosabertos.tse.jus.br | Lei 9.504/1997 |
+| 32 | TSE Filiados (Filiação Partidaria) | dadosabertos.tse.jus.br | Lei 9.096/1995 (Lei dos Partidos) |
+| 33 | OFAC SDN | treasury.gov | Lista pública de sanções dos EUA |
+| 34 | EU Sanctions | data.europa.eu | Lista pública de sanções da UE |
+| 35 | UN Sanctions | un.org | Lista pública do Conselho de Segurança da ONU |
+| 36 | World Bank Debarment | worldbank.org | Lista pública de impedimentos |
 | 37 | Holdings (derivado) | — | Derivado dos dados CNPJ |
-| 38 | SIOP (Emendas Orcamentarias) | siop.planejamento.gov.br | LC 131/2009, LAI |
+| 38 | SIOP (Emendas Orcamentárias) | siop.planejamento.gov.br | LC 131/2009, LAI |
 | 39 | Senado CPIs | dadosabertos.senado.leg.br | LAI, CF Art. 58 §3 |
 
 </details>
 
-Todos os achados sao apresentados como conexoes de dados atribuidas a fontes, nunca como acusacoes. A plataforma aplica defaults publicos seguros que impedem exposicao de informacoes pessoais em deployments publicos.
+Todos os achados são apresentados como conexões de dados atribuidas a fontes, nunca como acusações. A plataforma aplica defaults públicos seguros que impedem exposição de informações pessoais em deployments públicos.
 
 <details>
 <summary><b>Defaults publicos seguros</b></summary>
