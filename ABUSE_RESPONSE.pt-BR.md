@@ -38,14 +38,14 @@ Todos os controles são aplicados em melhor esforço, de forma proporcional ao r
 
 Fluxo de escalonamento:
 
-1. triagem de mantenedor;
-2. revisão de governança/jurídico para casos de alto impacto;
+1. triagem do mantenedor;
+2. revisão jurídica e de governança para casos de alto impacto;
 3. escalonamento externo apenas quando exigido por lei.
 
 Retenção de evidências:
 
-- manter pelo período mínimo necessário para resposta, obrigação legal e auditabilidade;
-- restringir acesso da evidência a mantenedores autorizados.
+- manter pelo período mínimo necessário para resposta, cumprimento de obrigação legal e auditabilidade;
+- restrição de acesso às evidências apenas a mantenedores autorizados.
 
 Políticas relacionadas:
 
